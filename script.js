@@ -63,7 +63,7 @@ faqQuestions.forEach(question => {
         if(answer.style.maxHeight){
 
             answer.style.maxHeight = null;
-            answer.style.padding = "0 20px";
+            answer.style.padding = "0 10px";
 
         }else{
 

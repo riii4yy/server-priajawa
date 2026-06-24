@@ -303,34 +303,46 @@ border:2px solid #777;
 /* FAQ */
 
 .faq-box{
-max-width:900px;
-margin:auto;
+    max-width:900px;
+    margin:auto;
+}
+
+.faq-item{
+    margin-bottom:12px;
 }
 
 .faq-question{
-width:100%;
-text-align:left;
+    width:100%;
+    text-align:left;
 
-background:#141414;
-color:white;
+    background:#141414;
+    color:white;
 
-padding:18px;
+    padding:18px 20px;
 
-border:none;
-margin-bottom:5px;
-cursor:pointer;
+    border:1px solid rgba(212,175,55,.2);
+    border-radius:12px;
 
+    cursor:pointer;
+
+    font-size:16px;
+    font-weight:600;
 }
 
 .faq-answer{
-background:#1b1b1b;
 
-padding:0 18px;
-max-height:0;
-overflow:hidden;
+    background:#1d1d1d;
 
-transition:.3s;
+    border-left:3px solid #d4af37;
 
+    max-height:0;
+
+    overflow:hidden;
+
+    transition:all .35s ease;
+
+    padding:0 20px;
+    border-radius:0 0 12px 12px;
 }
 
 /* Footer */

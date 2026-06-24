@@ -50,25 +50,28 @@ window.addEventListener("scroll", () => {
 // FAQ ACCORDION
 // =========================
 
-const faqQuestions = document.querySelectorAll(".faq-question");
+const faqQuestions =
+document.querySelectorAll(".faq-question");
 
-faqQuestions.forEach(btn => {
+faqQuestions.forEach(question => {
 
-    btn.addEventListener("click", () => {
+    question.addEventListener("click", () => {
 
-        const answer = btn.nextElementSibling;
+        const answer =
+        question.nextElementSibling;
 
         if(answer.style.maxHeight){
 
             answer.style.maxHeight = null;
-            answer.style.padding = "0 18px";
+            answer.style.padding = "0 20px";
 
         }else{
 
             answer.style.maxHeight =
-                answer.scrollHeight + "px";
+            answer.scrollHeight + "px";
 
-            answer.style.padding = "18px";
+            answer.style.padding =
+            "20px";
 
         }
 

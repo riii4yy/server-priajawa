@@ -71,7 +71,7 @@ function initScrollFadeIn() {
 
 // >>> EDIT DI SINI: total member server, isi manual karena widget.json
 // Discord TIDAK menyediakan jumlah total member, hanya member online.
-const totalMemberManual = 0; // <-- ganti angka ini sesuai jumlah member asli
+const totalMemberManual = 20; // <-- ganti angka ini sesuai jumlah member asli
 
 const GUILD_ID = '1455762620907913409';
 const WIDGET_URL = `https://discord.com/api/guilds/${GUILD_ID}/widget.json`;
@@ -294,9 +294,9 @@ function initAccordion() {
    /assets/music/ supaya tinggal timpa file tanpa ubah kode.
 --------------------------------------------------------- */
 const playlist = [
-  { title: 'Judul Lagu 1', src: 'assets/music/track1.mp3' },
-  { title: 'Judul Lagu 2', src: 'assets/music/track2.mp3' },
-  { title: 'Judul Lagu 3', src: 'assets/music/track3.mp3' },
+  { title: 'Kutho Karanganyar Tentrem', src: 'assets/music/track1.mp3' },
+  { title: 'Warok Ponorogo', src: 'assets/music/track2.mp3' },
+  { title: 'Kyai Petruk', src: 'assets/music/track3.mp3' },
 ];
 
 let currentTrackIndex = 0;

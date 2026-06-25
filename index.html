@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SERVER PRIA JAWA — Komunitas Gaming Sosial</title>
+<meta name="description" content="SERVER PRIA JAWA — komunitas Discord gaming sosial bertema kerajaan Jawa. Terbuka untuk semua, tanpa memandang suku, daerah, atau latar belakang.">
+
+<!-- Favicon: ganti dengan logo asli di /assets/images/favicon.png -->
+<link rel="icon" type="image/png" href="assets/images/favicon.png">
+
+<!-- Fonts: Cinzel (kesan kerajaan/ukiran) + Plus Jakarta Sans (modern, mudah dibaca) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;900&family=Cinzel+Decorative:wght@700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ============== BANNER MUSIK (autoplay muted -> klik untuk suara) ============== -->
+<button id="musicBanner" class="music-banner" type="button">
+  🔔 Klik untuk nyalakan musik
+</button>
+
+<!-- ============== NAVBAR ============== -->
+<header class="navbar" id="navbar">
+  <div class="navbar__inner">
+    <a href="#home" class="navbar__brand">
+      <!-- Ganti src logo di sini dengan file logo asli kamu -->
+      <img src="assets/images/logo.png" alt="Logo Server Pria Jawa" class="navbar__logo" onerror="this.style.display='none'">
+      <span class="navbar__title">SERVER<br>PRIA JAWA</span>
+    </a>
+
+    <nav class="navbar__menu" id="navMenu">
+      <a href="#home" class="nav-link">Home</a>
+      <a href="#tentang" class="nav-link">Tentang</a>
+      <a href="#member" class="nav-link">Member</a>
+      <a href="#staff" class="nav-link">Staff</a>
+      <a href="#game" class="nav-link">Game</a>
+      <a href="#galeri" class="nav-link">Galeri</a>
+      <a href="#faq" class="nav-link">FAQ</a>
+      <a href="#rules" class="nav-link">Rules</a>
+    </nav>
+
+    <div class="navbar__actions">
+      <a href="https://discord.gg/MexxP2G4K" target="_blank" rel="noopener" class="btn btn--gold navbar__cta">Join Discord</a>
+      <button class="navbar__burger" id="navBurger" aria-label="Buka menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============== HERO ============== -->
+  <section id="home" class="hero">
+    <div class="hero__ornament hero__ornament--left" aria-hidden="true"></div>
+    <div class="hero__ornament hero__ornament--right" aria-hidden="true"></div>
+
+    <div class="hero__content fade-in">
+      <img src="assets/images/logo.png" alt="Logo Server Pria Jawa" class="hero__logo" onerror="this.style.display='none'">
+      <p class="hero__eyebrow">Kerajaan Jawa &times; Gaming Sosial</p>
+      <h1 class="hero__title">SERVER PRIA JAWA</h1>
+      <div class="hero__divider" aria-hidden="true"></div>
+      <p class="hero__tagline">
+        "Pria Jawa" hanyalah nama &amp; identitas server — terbuka untuk semua,
+        tanpa memandang suku, daerah, atau latar belakang.
+      </p>
+
+      <div class="hero__actions">
+        <a href="https://discord.gg/MexxP2G4K" target="_blank" rel="noopener" class="btn btn--gold btn--lg">
+          Gabung Server Discord
+        </a>
+        <button id="musicToggle" class="btn btn--ghost btn--lg" type="button">
+          <span id="musicIcon">▶</span> Musik
+        </button>
+      </div>
+    </div>
+
+    <div class="hero__scroll-cue" aria-hidden="true"><span></span></div>
+  </section>
+
+  <!-- ============== TENTANG ============== -->
+  <section id="tentang" class="section">
+    <div class="section__heading fade-in">
+      <span class="ornament-line" aria-hidden="true"></span>
+      <h2>Tentang Server</h2>
+      <span class="ornament-line" aria-hidden="true"></span>
+    </div>
+    <div class="about fade-in">
+      <p>
+        <strong>SERVER PRIA JAWA</strong> adalah komunitas Discord yang lahir dari kecintaan
+        pada budaya Jawa dan dunia gaming. Nama "Pria Jawa" sekadar identitas dan ciri khas
+        server — bukan syarat siapa yang boleh bergabung. Siapapun, dari mana pun, dengan
+        latar belakang apapun, dipersilakan masuk dan jadi bagian keluarga ini.
+      </p>
+      <p>
+        Di sini, kamu bisa mabar, ngobrol santai, berbagi konten, dan tumbuh bareng komunitas
+        yang menjunjung kekompakan layaknya paseduluran di tanah Jawa — dibungkus dengan
+        suasana gaming modern yang seru dan nyaman.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============== STATISTIK MEMBER ============== -->
+  <section id="member" class="section section--alt">
+    <div class="section__heading fade-in">
+      <span class="ornament-line" aria-hidden="true"></span>
+      <h2>Statistik Member</h2>
+      <span class="ornament-line" aria-hidden="true"></span>
+    </div>
+
+    <div class="stats fade-in">
+      <div class="stat-card">
+        <span class="stat-card__icon">🟢</span>
+        <span class="stat-card__value" id="onlineCount">0</span>
+        <span class="stat-card__label">Member Online</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-card__icon">👥</span>
+        <!-- totalMemberManual diatur manual di script.js -->
+        <span class="stat-card__value" id="totalCount">0</span>
+        <span class="stat-card__label">Total Member</span>
+      </div>
+    </div>
+
+    <div class="widget-wrap fade-in">
+      <iframe
+        src="https://discord.com/widget?id=1455762620907913409&theme=dark"
+        width="350" height="500"
+        allowtransparency="true"
+        frameborder="0"
+        sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
+        class="discord-widget-frame"
+        title="Discord Widget Server Pria Jawa">
+      </iframe>
+    </div>
+
+    <!-- ============== LIVE FEED JOIN/LEAVE ============== -->
+    <div class="livefeed fade-in">
+      <h3 class="livefeed__title">Aktivitas Member Terbaru</h3>
+      <p class="livefeed__note">
+        * Data di bawah masih contoh (mock). Lihat komentar di <code>script.js</code>
+        untuk cara menyambungkan ke bot/webhook Discord agar real-time.
+      </p>
+      <ul class="livefeed__list" id="liveFeedList"><!-- diisi via JS --></ul>
+    </div>
+  </section>
+
+  <!-- ============== STAFF ============== -->
+  <section id="staff" class="section">
+    <div class="section__heading fade-in">
+      <span class="ornament-line" aria-hidden="true"></span>
+      <h2>Staff &amp; Tim</h2>
+      <span class="ornament-line" aria-hidden="true"></span>
+    </div>
+
+    <div class="staff-grid fade-in">
+
+      <!-- OWNER -->
+      <div class="staff-card staff-card--owner">
+        <span class="staff-card__badge staff-card__badge--gold">OWNER</span>
+        <!-- Ganti src di bawah dengan foto asli Riii4yy -->
+        <div class="staff-card__avatar" data-img="assets/images/staff-owner.jpg">
+          <span class="staff-card__emoji">👑</span>
+        </div>
+        <h3 class="staff-card__name">Riii4yy</h3>
+        <p class="staff-card__alias">a.k.a Ridwanchiell</p>
+        <p class="staff-card__role">Prabu 『 OWNER 』</p>
+      </div>
+
+      <!-- ADMIN -->
+      <div class="staff-card staff-card--admin">
+        <span class="staff-card__badge staff-card__badge--pink">ADMIN</span>
+        <!-- Ganti src di bawah dengan foto asli Iel -->
+        <div class="staff-card__avatar" data-img="assets/images/staff-admin.jpg">
+          <span class="staff-card__emoji">🏯</span>
+        </div>
+        <h3 class="staff-card__name">Iel</h3>
+        <p class="staff-card__alias">a.k.a El</p>
+        <p class="staff-card__role">Adipati 『 ADMIN 』</p>
+      </div>
+
+      <!-- MODERATOR -->
+      <div class="staff-card staff-card--mod">
+        <span class="staff-card__badge staff-card__badge--orange">MODERATOR</span>
+        <!-- Ganti src di bawah dengan foto asli Vympel -->
+        <div class="staff-card__avatar" data-img="assets/images/staff-mod.jpg">
+          <span class="staff-card__emoji">⚔️</span>
+        </div>
+        <h3 class="staff-card__name">Vympel</h3>
+        <p class="staff-card__alias">Moderator</p>
+        <p class="staff-card__role">Senopati 『 MODERATOR 』</p>
+      </div>
+
+      <!-- HELPER - SLOT KOSONG -->
+      <div class="staff-card staff-card--empty">
+        <span class="staff-card__badge staff-card__badge--outline">HELPER</span>
+        <div class="staff-card__avatar staff-card__avatar--empty">
+          <span class="staff-card__emoji">🛡️</span>
+        </div>
+        <h3 class="staff-card__name">Available</h3>
+        <p class="staff-card__alias">Belum Terisi</p>
+        <p class="staff-card__role">Wira 『 HELPER 』</p>
+        <a href="https://discord.gg/MexxP2G4K" target="_blank" rel="noopener" class="staff-card__apply">
+          Mau jadi Helper? Daftar di sini →
+        </a>
+      </div>
+
+      <!--
+        TAMBAH STAFF BARU:
+        1. Copy salah satu blok <div class="staff-card ...">...</div> di atas.
+        2. Ganti badge, nama, alias, role, emoji, dan data-img sesuai staff baru.
+        3. Tambahkan warna badge baru (jika perlu) di style.css, cari ".staff-card__badge--".
+      -->
+    </div>
+  </section>
+
+  <!-- ============== GAME ============== -->
+  <section id="game" class="section section--alt">
+    <div class="section__heading fade-in">
+      <span class="ornament-line" aria-hidden="true"></span>
+      <h2>Game yang Dimainkan</h2>
+      <span class="ornament-line" aria-hidden="true"></span>
+    </div>
+
+    <div class="game-grid fade-in" id="gameGrid"><!-- diisi via JS dari array games --></div>
+  </section>
+
+  <!-- Modal info game -->
+  <div class="modal" id="gameModal" hidden>
+    <div class="modal__overlay" data-close-modal></div>
+    <div class="modal__box">
+      <button class="modal__close" data-close-modal aria-label="Tutup">✕</button>
+      <h3 class="modal__title" id="modalGameTitle"></h3>
+      <p class="modal__text" id="modalGameText"></p>
+    </div>
+  </div>
+
+  <!-- ============== GALERI ============== -->
+  <section id="galeri" class="section">
+    <div class="section__heading fade-in">
+      <span class="ornament-line" aria-hidden="true"></span>
+      <h2>Galeri</h2>
+      <span class="ornament-line" aria-hidden="true"></span>
+    </div>
+
+    <div class="gallery-grid fade-in" id="galleryGrid"><!-- diisi via JS dari array gallery --></div>
+  </section>
+
+  <!-- Lightbox galeri -->
+  <div class="lightbox" id="lightbox" hidden>
+    <div class="lightbox__overlay" data-close-lightbox></div>
+    <button class="lightbox__close" data-close-lightbox aria-label="Tutup">✕</button>
+    <button class="lightbox__nav lightbox__nav--prev" id="lightboxPrev" aria-label="Sebelumnya">‹</button>
+    <img class="lightbox__img" id="lightboxImg" src="" alt="">
+    <button class="lightbox__nav lightbox__nav--next" id="lightboxNext" aria-label="Selanjutnya">›</button>
+    <p class="lightbox__caption" id="lightboxCaption"></p>
+  </div>
+
+  <!-- ============== FAQ ============== -->
+  <section id="faq" class="section section--alt">
+    <div class="section__heading fade-in">
+      <span class="ornament-line" aria-hidden="true"></span>
+      <h2>FAQ</h2>
+      <span class="ornament-line" aria-hidden="true"></span>
+    </div>
+
+    <div class="accordion fade-in" id="faqAccordion">
+
+      <div class="accordion__item">
+        <button class="accordion__trigger" aria-expanded="false">
+          Apa itu Server Pria Jawa?
+          <span class="accordion__icon">+</span>
+        </button>
+        <div class="accordion__panel">
+          <p>Komunitas Discord bertema kerajaan Jawa &amp; gaming sosial. "Pria Jawa" hanya nama —
+          terbuka untuk semua orang, segala suku, daerah, dan gender.</p>
+        </div>
+      </div>
+
+      <div class="accordion__item">
+        <button class="accordion__trigger" aria-expanded="false">
+          Apakah harus orang Jawa untuk bisa join?
+          <span class="accordion__icon">+</span>
+        </button>
+        <div class="accordion__panel">
+          <p>Tidak. Siapapun boleh bergabung tanpa memandang suku, daerah, atau latar belakang.
+          Nama "Pria Jawa" murni identitas/branding server saja.</p>
+        </div>
+      </div>
+
+      <div class="accordion__item">
+        <button class="accordion__trigger" aria-expanded="false">
+          Bagaimana cara join server?
+          <span class="accordion__icon">+</span>
+        </button>
+        <div class="accordion__panel">
+          <p>Klik tombol "Join Discord" di navbar atau hero section, lalu ikuti instruksi
+          verifikasi (jika ada) di channel <em>#rules</em> atau <em>#verifikasi</em>.</p>
+        </div>
+      </div>
+
+      <div class="accordion__item">
+        <button class="accordion__trigger" aria-expanded="false">
+          Apakah ada syarat usia atau game tertentu?
+          <span class="accordion__icon">+</span>
+        </button>
+        <div class="accordion__panel">
+          <p>Tidak ada syarat khusus. Pemain Minecraft, Free Fire, Mobile Legends, PUBG Mobile,
+          Roblox, atau game lain — semua dipersilakan.</p>
+        </div>
+      </div>
+
+      <div class="accordion__item">
+        <button class="accordion__trigger" aria-expanded="false">
+          Bagaimana cara mendapat role di server?
+          <span class="accordion__icon">+</span>
+        </button>
+        <div class="accordion__panel">
+          <p>Ambil role sesuai minat (gamer, editor, youtuber, dll) melalui channel role-assign.
+          Klaim role asal-asalan atau abuse role tidak diperbolehkan.</p>
+        </div>
+      </div>
+
+      <div class="accordion__item">
+        <button class="accordion__trigger" aria-expanded="false">
+          Bagaimana cara melamar jadi staff (misalnya Helper)?
+          <span class="accordion__icon">+</span>
+        </button>
+        <div class="accordion__panel">
+          <p>Slot Wira (Helper) masih terbuka! Hubungi Admin/Owner langsung di server,
+          atau tunggu pengumuman open-recruitment di channel pengumuman.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============== RULES ============== -->
+  <section id="rules" class="section rules">
+    <div class="section__heading fade-in">
+      <span class="ornament-line ornament-line--rules" aria-hidden="true"></span>
+      <h2>SERVER PRIA JAWA - RULES</h2>
+      <span class="ornament-line ornament-line--rules" aria-hidden="true"></span>
+    </div>
+
+    <div class="rules__intro fade-in">
+      <p>
+        <strong>"Pria Jawa"</strong> hanya nama &amp; identitas server. Server ini terbuka untuk
+        semua orang tanpa memandang suku, daerah, atau latar belakang.
+      </p>
+    </div>
+
+    <div class="rules__list fade-in">
+
+      <div class="rule-card">
+        <span class="rule-card__num">01</span>
+        <span class="rule-card__icon">🤝</span>
+        <h3 class="rule-card__title">Hormat Sesama Member</h3>
+        <ul>
+          <li>Wajib saling menghormati semua member</li>
+          <li>Tidak boleh menghina, merendahkan, atau diskriminasi</li>
+          <li>Gunakan bahasa yang sopan dan nyaman</li>
+        </ul>
+      </div>
+
+      <div class="rule-card">
+        <span class="rule-card__num">02</span>
+        <span class="rule-card__icon">⚠️</span>
+        <h3 class="rule-card__title">Toxic &amp; Drama</h3>
+        <ul>
+          <li>Toxic ringan (candaan) masih diperbolehkan sewajarnya</li>
+          <li>Dilarang toxic berlebihan yang mengarah ke hinaan, SARA, atau menyinggung serius</li>
+          <li>Tidak membuat drama di dalam server</li>
+          <li>Jaga suasana tetap santai &amp; nyaman</li>
+        </ul>
+      </div>
+
+      <div class="rule-card">
+        <span class="rule-card__num">03</span>
+        <span class="rule-card__icon">🎮</span>
+        <h3 class="rule-card__title">Gaming &amp; Chat</h3>
+        <ul>
+          <li>Gunakan channel sesuai kategori</li>
+          <li>Respect semua game dan player</li>
+          <li>Boleh sharing, diskusi, dan mabar dengan sehat</li>
+        </ul>
+      </div>
+
+      <div class="rule-card">
+        <span class="rule-card__num">04</span>
+        <span class="rule-card__icon">📢</span>
+        <h3 class="rule-card__title">Promosi</h3>
+        <ul>
+          <li>Dilarang promosi tanpa izin admin</li>
+          <li>Konten YouTube / TikTok / server lain wajib izin dulu</li>
+        </ul>
+      </div>
+
+      <div class="rule-card">
+        <span class="rule-card__num">05</span>
+        <span class="rule-card__icon">🏷️</span>
+        <h3 class="rule-card__title">Role System</h3>
+        <ul>
+          <li>Ambil role sesuai minat (gamer, editor, youtuber, dll)</li>
+          <li>Dilarang asal klaim role atau abuse role</li>
+        </ul>
+      </div>
+
+      <div class="rule-card">
+        <span class="rule-card__num">06</span>
+        <span class="rule-card__icon">👑</span>
+        <h3 class="rule-card__title">Staff Rules</h3>
+        <ul>
+          <li>Hormati admin &amp; moderator</li>
+          <li>Ikuti arahan staff</li>
+          <li>Keputusan staff bersifat final</li>
+        </ul>
+      </div>
+
+      <div class="rule-card">
+        <span class="rule-card__num">07</span>
+        <span class="rule-card__icon">🌿</span>
+        <h3 class="rule-card__title">Kebersamaan</h3>
+        <ul>
+          <li>Server ini untuk semua orang</li>
+          <li>Jaga kekompakan &amp; kenyamanan bersama</li>
+          <li>Rukun, santai, dan saling menghargai</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="rules__footer fade-in">
+      <p>
+        "Pria Jawa" hanyalah nama server, bukan batasan siapa yang boleh bergabung.
+        🎮 Selamat datang &amp; selamat bergabung!
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============== FOOTER ============== -->
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <img src="assets/images/logo.png" alt="Logo Server Pria Jawa" class="footer__logo" onerror="this.style.display='none'">
+      <span>SERVER PRIA JAWA</span>
+    </div>
+
+    <div class="footer__social">
+      <!-- Ganti href dengan akun sosial media asli -->
+      <a href="https://discord.gg/MexxP2G4K" target="_blank" rel="noopener" aria-label="Discord">Discord</a>
+      <a href="#" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a>
+      <a href="#" target="_blank" rel="noopener" aria-label="TikTok">TikTok</a>
+      <a href="#" target="_blank" rel="noopener" aria-label="YouTube">YouTube</a>
+    </div>
+
+    <a href="https://discord.gg/MexxP2G4K" target="_blank" rel="noopener" class="btn btn--gold footer__cta">
+      Gabung Discord
+    </a>
+
+    <p class="footer__copy">&copy; <span id="year"></span> SERVER PRIA JAWA. Semua hak dilindungi.</p>
+  </div>
+</footer>
+
+<!-- ============== MINI MUSIC PLAYER ============== -->
+<div class="player" id="player">
+  <button class="player__toggle" id="playerCollapse" aria-label="Tutup/buka player">🎵</button>
+  <div class="player__body">
+    <div class="player__info">
+      <span class="player__title" id="playerTrackTitle">Belum ada lagu</span>
+      <div class="player__progress" id="playerProgressBar">
+        <div class="player__progress-fill" id="playerProgressFill"></div>
+      </div>
+    </div>
+    <div class="player__controls">
+      <button id="playerPrev" aria-label="Sebelumnya">⏮</button>
+      <button id="playerPlayPause" aria-label="Play/Pause">▶</button>
+      <button id="playerNext" aria-label="Selanjutnya">⏭</button>
+      <input type="range" id="playerVolume" min="0" max="1" step="0.01" value="0.6" aria-label="Volume">
+    </div>
+  </div>
+</div>
+
+<audio id="audioPlayer" loop="false"></audio>
+
+<script src="script.js"></script>
+</body>
+</html>
